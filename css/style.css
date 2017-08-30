@@ -37,13 +37,12 @@
 body {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    font-size: 14px;
     color: #aaaaaa;
     line-height: 22px;
     overflow-y: hidden;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
-    background-color: #434242;
+    background-color: black;
 }
 body.blog {
     overflow-y: scroll;
@@ -214,10 +213,10 @@ h5 {
     clear: both;
 }
 .gray-bg {
-    background-color: #4f4f4f;
+    background-color: #1a1a1a;
 }
 .white-bg {
-    background-color: #434242;
+    background-color: #000000;
 }
 .button {
     border: 2px solid #ee6817;
@@ -448,10 +447,16 @@ h5 {
 .social .facebook {
     color: #5a7eca
 }
-.social .twitter {
-    color: #03acf1;
+
+.social .linkedin {
+    color: #0077b5
+}
+
+.social .github {
+    color: #53297b;
     margin: 0 26px 0 30px
 }
+
 .social .google-plus {
     color: #df4a32
 }
@@ -583,7 +588,7 @@ a.totop-link {
 }
 .introduction h2 {
     border: none;
-    color: #aeaeae;
+    color: #ee6817;
     text-transform: uppercase;
     line-height: 50px;
     padding-bottom: 0;
@@ -596,9 +601,9 @@ a.totop-link {
     z-index:2;
 }
 .introduction span.title {
-    border-bottom: 1px solid #7a7a7a;
-    border-top: 1px solid #7a7a7a;
-    color: #aeaeae;
+    border-bottom: 1px solid #ee7a09;
+    border-top: 1px solid #ee7611;
+    color: #ee6817;
     padding: 15px 0;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -609,17 +614,11 @@ a.totop-link {
    ========================================================================== */
 
 .about {
-    background: url(http://placehold.it/804x1080/474645) no-repeat 100% 0  #474645;
+    background: black;
     background-size: contain;
 }
 .about .inner {
     width: 50%
-}
-.about img {
-    position: absolute;
-    z-index: -1;
-    left: 0;
-    top: 0
 }
 .about-con {
     width: 100%
@@ -910,7 +909,7 @@ a.totop-link {
    #Last Screen
    ========================================================================== */
 .introduction-end {
-    background: url(http://placehold.it/1608x1080/000)no-repeat right top;
+    background: black;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
