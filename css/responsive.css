@@ -394,9 +394,6 @@
     .inner {
         padding: 130px 30px 40px 30px;
     }
-    .introduction .inner {
-        background: url(../images/black-transparent.png) repeat
-    }
     .introduction h2 {
         font-size: 35px;
         line-height: 40px;
@@ -405,10 +402,10 @@
     .introduction span.title {
         display: block;
         font-size: 11px;
-        color: #FFF;
         padding: 10px 0;
-        border-bottom: 1px solid #fff;
-        border-top: 1px solid #fff;
+        border-bottom: 1px solid #ee7a09;
+        border-top: 1px solid #ee7611;
+        color: #ee6817;
     }
     .button {
         width: auto;

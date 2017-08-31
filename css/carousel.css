@@ -147,7 +147,7 @@
  *display: inline;/*IE7 life-saver */
 }
 .owl-theme .owl-controls .owl-page span {
-	border: 2px solid #fff;
+	border: 2px solid #ee6817;
 	border-radius: 100%;
 	display: block;
 	height: 10px;
@@ -155,7 +155,7 @@
 	width: 10px;
 }
 .owl-theme .owl-controls .owl-page.active span, .owl-theme .owl-controls.clickable .owl-page:hover span {
-	background-color: #fff;
+	background-color: #ee6817;
 }
 
 /* ==========================================================================
