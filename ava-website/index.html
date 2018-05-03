@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="css/devices.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/devices.min.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
 	<!-- Latest Sortable -->
 	<script src="http://rubaxa.github.io/Sortable/Sortable.js"></script>
@@ -278,45 +278,47 @@
 		var formDataList = [];
 		var questionDataList = [];
 		$(document).ready(function(){
-			var myintro = introJs();
-			var steps = [];
-			steps.push({
-  				element: $('.bootstrap-select')[0],
-  				intro: 'Select the keyword to search for itembanks',
-  				step: 1,
-  				position: 'right'
-  			});
-  			steps.push({
-  				element: $('#searchBtn')[0],
-  				intro: 'Click here to search',
-  				step: 2
-  			});
-  			steps.push({
-  				element: $('#questionList')[0],
-  				intro: 'Your search result will be displayed here',
-  				step: 3
-  			});
-  			steps.push({
-  				element: $('#formList')[0],
-  				intro: 'Drag itembanks from search results to build your own assessment.<br> You can also drag the items within this list to reorder them.',
-  				step: 4
-  			});
-  			steps.push({
-  				element: $('#step5')[0],
-  				intro: 'Click on this button to preview the assessment item in mobile devices.',
-  				step: 5
-  			});
-  			steps.push({
-  				element: $('#iphoneFrame')[0],
-  				intro: 'Preview is shown within this iPhone Frame.',
-  				step: 6,
-  				position: 'right'
-  			});
-			myintro.onexit(function() {
-				clearData();
-  			});
-  			myintro.addSteps(steps);
-			myintro.start();
+			$('#keywords').on('loaded.bs.select', function (e) {
+				var myintro = introJs();
+				var steps = [];
+				steps.push({
+	  				element: $('.bootstrap-select')[0],
+	  				intro: 'Select the keyword to search for itembanks',
+	  				step: 1,
+	  				position: 'right'
+	  			});
+	  			steps.push({
+	  				element: $('#searchBtn')[0],
+	  				intro: 'Click here to search',
+	  				step: 2
+	  			});
+	  			steps.push({
+	  				element: $('#questionList')[0],
+	  				intro: 'Your search result will be displayed here',
+	  				step: 3
+	  			});
+	  			steps.push({
+	  				element: $('#formList')[0],
+	  				intro: 'Drag itembanks from search results to build your own assessment.<br> You can also drag the items within this list to reorder them.',
+	  				step: 4
+	  			});
+	  			steps.push({
+	  				element: $('#step5')[0],
+	  				intro: 'Click on this button to preview the assessment item in mobile devices.',
+	  				step: 5
+	  			});
+	  			steps.push({
+	  				element: $('#iphoneFrame')[0],
+	  				intro: 'Preview is shown within this iPhone Frame.',
+	  				step: 6,
+	  				position: 'right'
+	  			});
+				myintro.onexit(function() {
+					clearData();
+	  			});
+	  			myintro.addSteps(steps);
+				myintro.start();
+			});
 		});
 
 		function changeiPhoneColor(event) {
