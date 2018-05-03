@@ -1,0 +1,6 @@
+{
+  "name": "AVA_WEBSITE",
+  "dependencies": {
+    "sortablejs": "^1.7.0"
+  }
+}

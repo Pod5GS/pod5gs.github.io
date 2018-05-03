@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		AVA Website
+	</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="css/devices.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
+	<!-- Latest Sortable -->
+	<script src="http://rubaxa.github.io/Sortable/Sortable.js"></script>
+	<!-- Intro.js -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/introjs.min.css">
+	<!-- Bootstrap-Select -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+  
+	<style type="text/css">
+
+		body {
+			margin: 10px;
+			font-size: 20px;
+			height: 100%;
+			background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+		}
+
+		.glyphicon-move {
+		  /*cursor: move;*/
+		  /*cursor: -webkit-grabbing;*/
+		  padding-right: 5px
+		}
+
+		.leaveBlank {
+			min-height: 30px;
+			padding: 10px;
+			border: dashed;
+			border-color: #EEE;
+		}
+
+		.list-group-item {
+			cursor: pointer;
+		}
+
+		.preview-control {
+			padding-left: 10px
+		}
+
+		.preview-icon {
+			padding-left: 10px
+		}
+
+		.screen_image{
+			width: 100%; 
+			height: 40%;
+			padding: 10%;
+			text-align: center;
+		}
+
+		.screen_image > img{
+			max-width: 100%;
+			max-height: 100%;
+			width:auto;
+			height: auto;
+			border-radius: 5px;
+		}
+
+		.screen_question{
+			text-align: center;
+		}
+
+		.screen_options{
+			text-align: center;
+		}
+
+		.screen_options > button{
+			margin-top: 5%;
+		}
+
+		.screen_scale{
+			text-align: center;
+			margin-top: 20%;
+		}
+
+		.scale_text{
+			display: flex;
+			justify-content: space-between;
+		}
+
+		#begin_text{
+			padding-left: 5%;
+			max-width: 40%;
+			font-size: 10px;
+		}
+
+		#end_text{
+			padding-right: 5%;
+			max-width: 40%;
+			font-size: 10px;
+		}
+
+		.btn-secondary {
+			color: #fff;
+    		background-color: #6c757d;
+    		border-color: #6c757d;
+		}
+
+		.btn-secondary:hover {
+    		color: #fff;
+    		background-color: #5a6268;
+    		border-color: #545b62;
+		}
+
+		.btn-outline-info {
+			color: #17a2b8;
+			background-color: transparent;
+			background-image: none;
+			border-color: #17a2b8;
+		}
+
+		.btn-outline-info:hover {
+			color: #fff;
+			background-color: #17a2b8;
+			border-color: #17a2b8;
+		}
+
+		.wrapper {
+			align-items: center;justify-content: center;position: relative;
+    		display: flex;
+    		flex-wrap: wrap;
+    		min-height: 100vh;
+		}
+
+		ul {
+			list-style: none;
+		}
+
+		.selector {
+			width: 100%;
+			text-align: center;
+			display: block;
+			position: absolute;
+			top: 120px;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			padding: 0;
+		}
+
+		.selector li.selected {
+			-webkit-transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+			transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+			-webkit-transform: scale(1);
+			transform: scale(1);
+			opacity: 1;
+		}
+
+		.selector li {
+			width: 30px;
+			height: 30px;
+			margin: 0 10px;
+			display: inline-block;
+			text-indent: -9999px;
+			border-radius: 30px;
+			line-height: 30px;
+			cursor: pointer;
+			-webkit-transition: all 0.2s ease-in-out;
+			transition: all 0.2s ease-in-out;
+			-webkit-transform: scale(0.6);
+			transform: scale(0.6);
+			opacity: 0.6;
+		}
+
+		.select-black {
+			background: #2c2b2c;
+		}
+
+		.select-silver {
+			background: #f0f0f0;
+		}
+
+		.select-gold {
+			background: #f1e2d0;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container wrapper">
+		<!-- Example row of columns -->
+		<div class="row">
+		<div id="iphoneFrame" class="col-md-4" style="overflow: hidden;">
+			<h2 style="text-align: center;">This is how the questions look like on your iPhone</h2>
+			<ul id='iphoneColorSelector' class="selector">
+				<li data="black" class="select-black" onclick="changeiPhoneColor(event);">Black</li>
+				<li data="silver" class="select-silver selected" onclick="changeiPhoneColor(event)";>White</li>
+				<li data="gold" class="select-gold" onclick="changeiPhoneColor(event)";>Gold</li>
+			</ul>
+			<div id="iphoneDevice" class="marvel-device iphone8 white" style="text-align: center;zoom: 0.85;margin-right: 20px; top: 120px;">
+			    <div class="top-bar"></div>
+			    <div class="sleep"></div>
+			    <div class="volume"></div>
+			    <div class="camera"></div>
+			    <div class="sensor"></div>
+			    <div class="speaker"></div>
+			    <div class="screen" style="zoom: 0.85;">
+			        <!-- Content goes here -->
+			        <img class="screen_status_bar" src="http://res.cloudinary.com/dz5nyqjsu/image/upload/v1520393609/status_bar_xeig6i.png" style="width: 100%" />
+			        <div class="screen_image">
+			        	<!-- <img id="screen_image" src="http://res.cloudinary.com/dz5nyqjsu/image/upload/v1520443747/placeholder_ha2jei.png"/> -->
+			        	<img id="screen_image" src="http://res.cloudinary.com/dfklhrsnh/image/upload/v1523756001/avadb/qzxfqkyzcx9f9flhiizh.jpg"/>
+			    	</div>
+			        <h1 id="screen_question" class="screen_question">Are you able to walk at normal speed?</h1>
+			        <div id="screen_response">
+			        	<hr>
+			        	<h5 style="text-align: center;">Your Response:</h5>
+				        <div id="screen_options" class="screen_options" style="">
+				        	<button class="btn btn-primary">Without any difficulty</button>
+				        	<button class="btn btn-primary">With a little difficulty</button>
+				        	<button class="btn btn-primary">With some difficulty</button>
+				        	<button class="btn btn-primary">With much difficulty</button>
+				        	<button class="btn btn-primary">Unable to do</button>
+				        </div>
+				        <div id="screen_scale" class="screen_scale" style="display: none;"> 
+				        	<div class="scale_text">
+					        	<p id="begin_text">Begin Text</p>
+					        	<p id="end_text">End Text</p>
+				        	</div>
+				        	<input id="rating" type="text" />
+				    	</div>
+			    	</div>
+			    </div>
+			    <div class="home"></div>
+			    <div class="bottom-bar"></div>
+			</div>
+		</div>
+		<div id="formSection" class="col-md-4" style="display: flex;flex-direction: column;">
+		    <h1>Form</h1>
+			<!-- List with handle -->
+			<div id="formList" class="list-group leaveBlank" style="overflow: scroll; height: 100%;">
+				<div class="list-group-item" draggable="false" style="">Are you able to walk at normal speed?<span class="preview-control"><button id="step5" type="button" class="btn btn-outline-info" onclick="showPreview('5ad2abe2ed2c8d328948f22f')">Preivew <svg class="svg-inline--fa fa-mobile-alt fa-w-10" aria-hidden="true" data-prefix="fas" data-icon="mobile-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M272 0H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h224c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM160 480c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm112-108c0 6.6-5.4 12-12 12H60c-6.6 0-12-5.4-12-12V60c0-6.6 5.4-12 12-12h200c6.6 0 12 5.4 12 12v312z"></path></svg><!-- <i class="fas fa-mobile-alt"></i> --></button></span></div><div class="list-group-item" draggable="false" style="">Are you able to stand up from an armless straight chair?<span class="preview-control"><button type="button" class="btn btn-outline-info" onclick="showPreview('5ad2ace2ed2c8d328948f231')">Preivew <svg class="svg-inline--fa fa-mobile-alt fa-w-10" aria-hidden="true" data-prefix="fas" data-icon="mobile-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M272 0H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h224c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM160 480c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm112-108c0 6.6-5.4 12-12 12H60c-6.6 0-12-5.4-12-12V60c0-6.6 5.4-12 12-12h200c6.6 0 12 5.4 12 12v312z"></path></svg><!-- <i class="fas fa-mobile-alt"></i> --></button></span></div><div class="list-group-item" draggable="false" style="">Are you able to get up from the floor from lying on your back without help?<span class="preview-control"><button type="button" class="btn btn-outline-info" onclick="showPreview('5ad2b59eed2c8d328948f233')">Preivew <svg class="svg-inline--fa fa-mobile-alt fa-w-10" aria-hidden="true" data-prefix="fas" data-icon="mobile-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M272 0H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h224c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM160 480c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm112-108c0 6.6-5.4 12-12 12H60c-6.6 0-12-5.4-12-12V60c0-6.6 5.4-12 12-12h200c6.6 0 12 5.4 12 12v312z"></path></svg><!-- <i class="fas fa-mobile-alt"></i> --></button></span></div>
+			</div>
+			<div style="width: 100%">
+				<button style="width: 100%" class="btn btn-dark">Submit</button>
+			</div>
+		</div>
+		<div id="inputSection" class="col-md-4" style="display: flex;flex-direction: column;">
+			<h1>Questions</h1>
+			<!-- <input type="text" id="keywords" style="height: 30px" placeholder="Input keyword" data-intro='Input the keyword to search for itembanks' data-step='1' value="mobility"> -->
+			<div>
+				<select id="keywords" class="selectpicker" data-live-search="true">
+					<option>Mobility</option>
+				</select>
+				<button type="button" id="searchBtn" class="btn btn-secondary" onclick="searchByKeyword()">Search</button>
+			</div>
+			<hr>
+			<!-- List with handle -->
+			<div id="questionList" class="list-group leaveBlank" style="overflow: scroll; height: 100%; margin-bottom: 0;"><div class="list-group-item">Are you able to walk at normal speed?<span class="preview-control"><button type="button" class="btn btn-outline-info" onclick="showPreview('5ad2abe2ed2c8d328948f22f')">Preivew <svg class="svg-inline--fa fa-mobile-alt fa-w-10" aria-hidden="true" data-prefix="fas" data-icon="mobile-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M272 0H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h224c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM160 480c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm112-108c0 6.6-5.4 12-12 12H60c-6.6 0-12-5.4-12-12V60c0-6.6 5.4-12 12-12h200c6.6 0 12 5.4 12 12v312z"></path></svg><!-- <i class="fas fa-mobile-alt"></i> --></button></span></div><div class="list-group-item">Are you able to stand up from an armless straight chair?<span class="preview-control"><button type="button" class="btn btn-outline-info" onclick="showPreview('5ad2ace2ed2c8d328948f231')">Preivew <svg class="svg-inline--fa fa-mobile-alt fa-w-10" aria-hidden="true" data-prefix="fas" data-icon="mobile-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M272 0H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h224c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM160 480c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm112-108c0 6.6-5.4 12-12 12H60c-6.6 0-12-5.4-12-12V60c0-6.6 5.4-12 12-12h200c6.6 0 12 5.4 12 12v312z"></path></svg><!-- <i class="fas fa-mobile-alt"></i> --></button></span></div><div class="list-group-item">Are you able to get up from the floor from lying on your back without help?<span class="preview-control"><button type="button" class="btn btn-outline-info" onclick="showPreview('5ad2b59eed2c8d328948f233')">Preivew <svg class="svg-inline--fa fa-mobile-alt fa-w-10" aria-hidden="true" data-prefix="fas" data-icon="mobile-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M272 0H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h224c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM160 480c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm112-108c0 6.6-5.4 12-12 12H60c-6.6 0-12-5.4-12-12V60c0-6.6 5.4-12 12-12h200c6.6 0 12 5.4 12 12v312z"></path></svg><!-- <i class="fas fa-mobile-alt"></i> --></button></span></div>
+			</div>
+		</div>
+	  </div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+	<script type="text/javascript">
+		var scale_exist_flag = false;
+		var upload_flag = false;
+		var formDataList = [];
+		var questionDataList = [];
+		$(document).ready(function(){
+			var myintro = introJs();
+			var steps = [];
+			steps.push({
+  				element: $('.bootstrap-select')[0],
+  				intro: 'Select the keyword to search for itembanks',
+  				step: 1,
+  				position: 'right'
+  			});
+  			steps.push({
+  				element: $('#searchBtn')[0],
+  				intro: 'Click here to search',
+  				step: 2
+  			});
+  			steps.push({
+  				element: $('#questionList')[0],
+  				intro: 'Your search result will be displayed here',
+  				step: 3
+  			});
+  			steps.push({
+  				element: $('#formList')[0],
+  				intro: 'Drag itembanks from search results to build your own assessment.<br> You can also drag the items within this list to reorder them.',
+  				step: 4
+  			});
+  			steps.push({
+  				element: $('#step5')[0],
+  				intro: 'Click on this button to preview the assessment item in mobile devices.',
+  				step: 5
+  			});
+  			steps.push({
+  				element: $('#iphoneFrame')[0],
+  				intro: 'Preview is shown within this iPhone Frame.',
+  				step: 6,
+  				position: 'right'
+  			});
+			myintro.onexit(function() {
+				clearData();
+  			});
+  			myintro.addSteps(steps);
+			myintro.start();
+		});
+
+		function changeiPhoneColor(event) {
+			var type = $(event.target).attr('data');
+			$('#iphoneColorSelector').find('.selected').removeClass('selected');
+			switch(type){
+				case 'black':
+					$('#iphoneDevice').attr('class', 'marvel-device iphone8 black');
+					$('#iphoneColorSelector').find('.select-black').addClass('selected');
+					break;
+				case 'silver':
+					$('#iphoneDevice').attr('class', 'marvel-device iphone8 silver');
+					$('#iphoneColorSelector').find('.select-silver').addClass('selected');
+					break;
+				case 'gold':
+					$('#iphoneDevice').attr('class', 'marvel-device iphone8 gold');
+					$('#iphoneColorSelector').find('.select-gold').addClass('selected');
+					break;
+			}
+		}
+
+		var getJSON = function (url, callback) {
+	        var xhr = new XMLHttpRequest();
+	        xhr.open('GET', url, true);
+	        xhr.responseType = 'json';
+	        xhr.onload = function () {
+	            var status = xhr.status;
+	            if (status === 200) {
+	                callback(null, xhr.response);
+	            } else {
+	                callback(status, xhr.response);
+	            }
+	        };
+	        xhr.send();
+    	};
+
+    	function getAllKeywords() {
+    		getJSON("https://cornelltechava-doctorside-api.herokuapp.com/api/itembank/keywords", function (err, keywords) {
+				if(err != null){
+					alert('Unable to get keywords...Please try again later')
+				}else{
+					$('#keywords').empty();
+					for(var i in keywords){
+						$('#keywords').append('<option value="'+ keywords[i] + '">' + keywords[i] + '</option>');
+					}
+					$('#keywords').selectpicker('refresh');
+					$('#keywords').selectpicker('val', '');
+				}
+			});
+    	}
+
+    	function displayPlaceholders() {
+    		if(formDataList.length == 0){
+    			var formPlaceHolderStr = '<div class="placeholder" style="height: 100%;width:  100%;display: table;text-align:  center;"><div style="display: table-cell;vertical-align: middle;">Please drag questions from right to here to create a form.</div></div>';
+				$('#formList').append(formPlaceHolderStr);
+    		}else{
+    			$('#formList').find('.placeholder').remove();
+    		}
+    		if(questionDataList.length == 0){
+    			var formPlaceHolderStr = '<div class="placeholder" style="height: 100%;width:  100%;display: table;text-align:  center;"><div style="display: table-cell;vertical-align: middle;">Please select a keyword and click search button to get questions.</div></div>';
+				$('#questionList').append(formPlaceHolderStr);
+    		}else{
+    			$('#questionList').find('.placeholder').remove();
+    		}
+    	}
+
+		function clearData() {
+			$('#keywords').selectpicker('val', '');
+			getAllKeywords();
+			$("#questionList").empty();
+			$("#formList").empty();
+			$("#screen_image").attr("src", "http://res.cloudinary.com/dz5nyqjsu/image/upload/v1520443747/placeholder_ha2jei.png");
+			$("#screen_question").val("Input question");
+			$("#screen_options").empty()
+			var htmlStr = "<button class='btn btn-primary'>Option1</button> <button class='btn btn-primary'>Option2</button> <button class='btn btn-primary'>Option3</button> <button class='btn btn-primary'>Option4</button> <button class='btn btn-primary'>Option5</button>";
+			$("#screen_options").html(htmlStr);
+			var height = $('#iphoneFrame').outerHeight();
+			$('#formSection').height(height);
+			$('#inputSection').height(height);
+			displayPlaceholders();
+		}
+
+		function build_scale(begin_value, end_value, step_size){
+			var tickslist = [];
+			if(begin_value >= end_value){
+				return "Begin Value should be less than End Value!";
+			}
+			if((end_value - begin_value) % step_size != 0){
+				return "Step Size should be divisible by the range between Begin Value and End Value!";
+			}
+			for(var i = begin_value; i <= end_value; i+=step_size){
+				tickslist.push(i);
+			}
+			var labels = [];
+			for(var i = 0; i < tickslist.length; i++){
+				labels.push(tickslist[i].toString());
+			}
+			if(scale_exist_flag)
+				$("#rating").slider('destroy');
+			$("#rating").slider({
+				ticks: tickslist,
+				ticks_labels: labels,
+				ticks_snap_bounds: 0,
+				step: step_size
+			});
+			scale_exist_flag = true;
+			return "OK";
+		}
+
+		function show_scale(begin_value, end_value, step_size){
+			var begin_value_placeholder = 0
+			var end_value_placeholder = 10
+			var step_size_placeholder = 1
+			if(isNaN(begin_value)){
+				begin_value = begin_value_placeholder;
+			}
+			if(isNaN(end_value)){
+				end_value = end_value_placeholder;
+			}
+			if(isNaN(step_size)){
+				step_size = step_size_placeholder;
+			}
+			var result = build_scale(begin_value, end_value, step_size);
+			if(result != "OK"){
+				alert(result);
+			}
+		}
+
+		function searchByKeyword() {
+			keywords = $('#keywords').selectpicker('val');
+			if (keywords == null) {
+				swal("Error!", "Please select one keyword!", "error");
+				return;
+			}
+			$('#keywords').selectpicker('val', '');
+			fetchItems(keywords)
+		}
+
+		function fetchItems(keywords) {
+			getJSON("https://cornelltechava-doctorside-api.herokuapp.com/api/itembank/keyword/" + keywords, function (err, itembankjson) {
+				console.log(itembankjson)
+				questionDataList = itembankjson
+				document.getElementById('questionList').innerHTML = getListHTML(questionDataList)
+			});
+		}
+
+		function getListHTML(items) {
+			var htmlCode = ''
+			for (i = 0; i < items.length; i++) {
+				item = items[i]
+				htmlCode += '<div class="list-group-item">' + item.question + '<span class="preview-control"><button type="button" class="btn btn-outline-info" onclick="showPreview(\'' + item._id + '\')">Preivew <i class="fas fa-mobile-alt"></i></button></span></div>'
+			}
+			return htmlCode
+		}
+
+		function showPreview(id) {
+			console.log(id)
+			var itemData = getItemDataById(id)
+			console.log(itemData)
+			if (itemData != null) {
+				displayOnDevice(itemData)
+			}
+		}
+
+		function displayOnDevice(itemData) {
+			let question = itemData.question
+			$("#screen_question").html(question)
+			var mediaURL = itemData.media_url
+			if(!mediaURL.includes('avadb')){
+				l = mediaURL.split('/')
+				l.splice(6, 0, 'avadb')
+				mediaURL = l.join('/')
+			}
+			console.log(mediaURL)
+			$("#screen_image").attr("src", mediaURL)
+			let options = itemData.options
+			let type = options.type
+			if (type == "text") {
+				var optionsArray = options.data
+				var htmlStr = ""
+				for(var i = 0; i < optionsArray.length; i++){
+					htmlStr += "<button class='btn btn-primary'>" + optionsArray[i] + "</button> "
+				}
+				$("#screen_options").html(htmlStr)
+				$('#option_text').show()
+				$('#screen_options').show()
+				$('#option_scale').hide()
+				$('#screen_scale').hide()
+			} else {
+				let beginText = options.data.begin_text
+				let beginValue = options.data.begin_value
+				let endText = options.data.end_text
+				let endValue = options.data.end_value
+				let stepSize = options.data.step_size
+				show_scale(beginValue, endValue, stepSize)
+				$('#begin_text').html(beginText)
+				$('#end_text').html(endText)
+				$('#option_text').hide()
+				$('#screen_options').hide()
+				$('#option_scale').show()
+				$('#screen_scale').show()
+			}
+		}
+
+		function getItemDataById(id) {
+
+		    for (var i=0; i < formDataList.length; i++) {
+		        if (formDataList[i]._id === id) {
+		            return formDataList[i];
+		        }
+		    }
+
+		    for (var i=0; i < questionDataList.length; i++) {
+		        if (questionDataList[i]._id === id) {
+		            return questionDataList[i];
+		        }
+		    }
+		    return null
+		}
+
+		function handleMovement(evt) {
+			// var itemEl = evt.item;  // dragged HTMLElement
+			target = formDataList
+			source = questionDataList
+
+			if (evt.from.id == 'formList') {
+				target = questionDataList
+				source = formDataList
+			}
+
+			removeIndex = evt.oldIndex  // element's old index within old parent
+			insertIndex = evt.newIndex  // element's new index within new parent
+
+			updateData(target, source, insertIndex, removeIndex);
+			displayPlaceholders();
+		}
+
+		function handleSort(evt) {
+			formDataList.splice(evt.newIndex, 0, formDataList.splice(evt.oldIndex, 1)[0])
+		}
+
+		function updateData(target, source, insertIndex, removeIndex) {
+			changedData = source.splice(removeIndex, 1)[0]
+			target.splice(insertIndex, 0, changedData)
+		}
+	</script>
+
+	<script type="text/javascript">	
+		// List with handle
+
+		Sortable.create(formList, {
+		  group: {
+		    name: 'formList',
+		    put: ['questionList']
+		  },
+		  // handle: '.glyphicon-move',
+		  animation: 150,
+  		  onAdd: function (evt) {
+			handleMovement(evt)
+		  },
+		  onRemove: function (evt) {
+			handleMovement(evt)
+		  },
+		  onUpdate: function (evt) {
+			handleSort(evt)
+		  }
+		});
+
+		Sortable.create(questionList, {
+		  group: {
+		    name: 'questionList',
+		    put: ['formList']
+		  },
+		  // handle: '.glyphicon-move',
+		  animation: 150,
+		 //  onSort: function (evt) {
+			// handleMovement(evt)
+		 //  },
+		  sort: false
+		});
+	</script>
+</body>
+</html>
