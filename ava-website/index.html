@@ -20,10 +20,10 @@
 	<style type="text/css">
 
 		body {
-			margin: 10px;
 			font-size: 20px;
 			height: 100%;
-			background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+			/*background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);*/
+			background: #343a40;
 			background-repeat: no-repeat;
 			background-attachment: fixed;
 		}
@@ -70,6 +70,7 @@
 
 		.screen_question{
 			text-align: center;
+			color: black;
 		}
 
 		.screen_options{
@@ -186,9 +187,41 @@
 		.select-gold {
 			background: #f1e2d0;
 		}
+
+		.navbar {
+			background: white;
+			border-radius: 0px;
+			margin-bottom: 0px;
+		}
+
+		h1{
+			color: white;
+		}
+
+		h2 {
+			color: white;
+		}
 	</style>
 </head>
 <body>
+
+	<nav class="navbar">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">WebSiteName</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="#">Page 1</a></li>
+				<li><a href="#">Page 2</a></li>
+				<li><a href="#">Page 3</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="register.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				<li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			</ul>
+		</div>
+	</nav>
 
 	<div class="container wrapper">
 		<!-- Example row of columns -->
@@ -372,13 +405,13 @@
 
     	function displayPlaceholders() {
     		if(formDataList.length == 0){
-    			var formPlaceHolderStr = '<div class="placeholder" style="height: 100%;width:  100%;display: table;text-align:  center;"><div style="display: table-cell;vertical-align: middle;">Please drag questions from right to here to create a form.</div></div>';
+    			var formPlaceHolderStr = '<div class="placeholder" style="height: 100%;width:  100%;display: table;text-align: center; color: white;"><div style="display: table-cell;vertical-align: middle;">Please drag questions from right to here to create a form.</div></div>';
 				$('#formList').append(formPlaceHolderStr);
     		}else{
     			$('#formList').find('.placeholder').remove();
     		}
     		if(questionDataList.length == 0){
-    			var formPlaceHolderStr = '<div class="placeholder" style="height: 100%;width:  100%;display: table;text-align:  center;"><div style="display: table-cell;vertical-align: middle;">Please select a keyword and click search button to get questions.</div></div>';
+    			var formPlaceHolderStr = '<div class="placeholder" style="height: 100%;width:  100%;display: table;text-align: center; color: white;"><div style="display: table-cell;vertical-align: middle;">Please select a keyword and click search button to get questions.</div></div>';
 				$('#questionList').append(formPlaceHolderStr);
     		}else{
     			$('#questionList').find('.placeholder').remove();
